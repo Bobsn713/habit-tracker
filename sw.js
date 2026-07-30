@@ -1,5 +1,5 @@
 // Logbook service worker — offline app shell + runtime caching.
-const CACHE = 'logbook-v3';
+const CACHE = 'logbook-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -26,17 +26,29 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
+
+  // Network-first for page loads so updates appear immediately when online.
+  if (req.mode === 'navigate') {
+    e.respondWith((async () => {
+      try {
+        const res = await fetch(req);
+        const cache = await caches.open(CACHE);
+        cache.put('./index.html', res.clone());
+        return res;
+      } catch (err) {
+        return (await caches.match(req)) || (await caches.match('./index.html'));
+      }
+    })());
+    return;
+  }
+
+  // Cache-first for other assets (icons, manifest, fonts) — fast and offline-friendly.
   e.respondWith((async () => {
     const cached = await caches.match(req);
     if (cached) return cached;
-    try {
-      const res = await fetch(req);
-      const cache = await caches.open(CACHE);
-      cache.put(req, res.clone());
-      return res;
-    } catch (err) {
-      if (req.mode === 'navigate') return caches.match('./index.html');
-      throw err;
-    }
+    const res = await fetch(req);
+    const cache = await caches.open(CACHE);
+    cache.put(req, res.clone());
+    return res;
   })());
 });
