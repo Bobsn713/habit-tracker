@@ -114,8 +114,11 @@
   }
 
   *{ box-sizing: border-box; transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
-  html{ background-color: var(--bg-solid); }
-  html,body{
+  html{
+    margin:0; padding:0; min-height:100%;
+    background-color: var(--bg-solid);
+  }
+  body{
     margin:0; padding:0; min-height:100%;
     background: var(--bg-image);
     background-color: var(--bg-solid);
