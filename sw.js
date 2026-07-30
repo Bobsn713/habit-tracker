@@ -1,5 +1,5 @@
 // Logbook service worker — offline app shell + runtime caching.
-const CACHE = 'logbook-v4';
+const CACHE = 'logbook-v5';
 const ASSETS = [
   './',
   './index.html',
