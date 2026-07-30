@@ -41,6 +41,7 @@
     --font-body: 'Work Sans';
     --radius-card: 16px;
     --radius-ctrl: 22px;
+    --bg-solid: #E4EEDD;
     --bg-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='rgba(60,125,89,0.16)' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(38 30) rotate(18)'%3E%3Cpath d='M0 70 C-2 46 2 22 0 0'/%3E%3Cpath d='M0 54 C-14 50 -20 40 -22 28'/%3E%3Cpath d='M0 40 C14 36 20 26 22 14'/%3E%3Cpath d='M0 26 C-12 22 -17 14 -19 4'/%3E%3C/g%3E%3Cg transform='translate(150 120) rotate(-24)'%3E%3Cpath d='M0 66 C-2 44 2 22 0 2'/%3E%3Cpath d='M0 50 C13 46 19 37 21 26'/%3E%3Cpath d='M0 37 C-13 33 -18 24 -20 14'/%3E%3Cpath d='M0 24 C12 20 17 12 19 3'/%3E%3C/g%3E%3Cg transform='translate(120 20) rotate(50)'%3E%3Cpath d='M0 34 C7 26 7 10 0 0 C-7 10 -7 26 0 34 Z'/%3E%3Cpath d='M0 32 L0 3'/%3E%3C/g%3E%3Cg transform='translate(30 150) rotate(-40)'%3E%3Cpath d='M0 34 C7 26 7 10 0 0 C-7 10 -7 26 0 34 Z'/%3E%3Cpath d='M0 32 L0 3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") 0 0 / 220px 220px repeat,
       radial-gradient(1100px 760px at 50% -12%, #F2F8ED 0%, #E4EEDD 58%, #D6E3CC 100%);
@@ -73,6 +74,7 @@
     --font-body: 'Inter';
     --radius-card: 10px;
     --radius-ctrl: 8px;
+    --bg-solid: #F0ECE2;
     --bg-image:
       repeating-linear-gradient(0deg, rgba(43,41,37,0.05) 0px, rgba(43,41,37,0.05) 1px, transparent 1px, transparent 25px),
       repeating-linear-gradient(90deg, rgba(43,41,37,0.05) 0px, rgba(43,41,37,0.05) 1px, transparent 1px, transparent 25px),
@@ -106,6 +108,7 @@
     --font-body: 'Share Tech Mono';
     --radius-card: 0px;
     --radius-ctrl: 0px;
+    --bg-solid: #000000;
     --bg-image: linear-gradient(180deg, #020402 0%, #000000 100%);
     --card-shadow: none;
     --tracking-label: 0.14em;
@@ -113,9 +116,11 @@
   }
 
   *{ box-sizing: border-box; transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+  html{ background-color: var(--bg-solid); }
   html,body{
     margin:0; padding:0; min-height:100%;
     background: var(--bg-image);
+    background-color: var(--bg-solid);
     color: var(--fg);
     font-family: var(--font-body), sans-serif;
     -webkit-font-smoothing: antialiased;
